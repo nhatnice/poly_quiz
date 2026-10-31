@@ -19,8 +19,13 @@ import "screens/quiz/main.dart";
 import "screens/auth/login/main.dart";
 import "screens/auth/signup/main.dart";
 
-void main() async{
-  await dotenv.load(fileName: ".env"); //Load env
+void main() async {
+  WidgetsFlutterBinding.ensureInitialized();
+  try {
+    await dotenv.load(fileName: ".env"); //Load env
+  } catch (e) {
+    debugPrint("Note: Could not load .env file ($e). Using default environment settings.");
+  }
   runApp(const MyApp());
 }
 

@@ -59,14 +59,13 @@ const avatarsImage = [
 ];
 
 class API {
-  static final Map<String, String> _headers = {
+  static Map<String, String> get _headers => {
     "Content-Type": "application/json",
-    "w_api_key" : dotenv.env["W_API_KEY"]!,
-    //"api_key" : dotenv.env["API_KEY"]!,
-    "app_id" : dotenv.env["APP_ID"]!,
+    "w_api_key": dotenv.env["W_API_KEY"] ?? "",
+    "app_id": dotenv.env["APP_ID"] ?? "",
   };
 
-  static String apiUrl = "http://localhost:8080";
+  static String get apiUrl => dotenv.env["API_URL"] ?? "http://localhost:8080";
 
   //*USER API
   static Future addUser(String email, String name, String password) async {
